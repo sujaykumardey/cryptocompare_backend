@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const db = require('./config/key').mongoURI;
+const {url} = require('./config/key');
 
 
 
@@ -13,7 +13,7 @@ app.listen(port, () => console.log(`listening on ${port}...`));
 const routers=require('./routes/api')
 
 
-mongoose.connect(db, {
+mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex:true
