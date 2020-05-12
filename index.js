@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const db = require('./config/key').mongoURI;
 
 
+
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ const routers=require('./routes/api')
 mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex:true
 });
 
 mongoose.connection.on('connected', () => {

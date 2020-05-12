@@ -10,4 +10,15 @@ const Schema={
 return Joi.validate(user,Schema);
 }
 
+function validateAuth(user){
+    const Schema={
+        email:Joi.string().min(5).max(255).required().email(),
+        password:Joi.string().min(5).max(255).required()
+    }
+    
+    return Joi.validate(user,Schema);
+    }
+
+
 exports.validateUser=validateUser;
+exports.validateAuth=validateAuth;
