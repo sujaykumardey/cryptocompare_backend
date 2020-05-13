@@ -22,4 +22,7 @@ mongoose.connection.on('connected', () => {
   console.log('mongoose is connect..');
 });
 
-app.use('/api', routers);
+app.get('/',(req,res)=>{
+  res.send('Welcome to TEAM_DENVER SITE')
+})
+.use('/api', routers);
