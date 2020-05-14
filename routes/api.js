@@ -44,7 +44,7 @@ router
     try {
       const { error } = validateAuth(req.body);
       if (error) return res.status(400).send('invalid username and password');
-      const user = await Login.find({ email: req.body.email });
+      const user = await Login.findOne({ email: req.body.email });
       if (!user) return res.send("user doesn't exsit");
       const validpassword = bcrypt.compare(req.body.password, user.password);
       if (!validpassword) return res.status(400).send('invalid password');
