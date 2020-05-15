@@ -33,7 +33,10 @@ router
       const hashed = await bcrypt.hash(login.password, salt);
       login.password = hashed;
       const user = await login.save();
-      res.json(_.pick(user, ['_id', 'name', 'email']));
+      
+      const token = jwt.sign({ _id: user._id }, jwtkey);
+      user.token=token;
+      res.json(_.pick(user, ['_id', 'name', 'email','token']))
     } catch (errror) {
       logger.error('info',error.message)
       res.status(500).send('something failed');
@@ -49,7 +52,8 @@ router
       const validpassword = bcrypt.compare(req.body.password, user.password);
       if (!validpassword) return res.status(400).send('invalid password');
       const token = jwt.sign({ _id: user._id }, jwtkey);
-      res.json({token});
+      user.token=token;
+      res.json(_.pick(user, ['_id', 'name', 'email','token']))
     } catch (error) {
       logger.error(error.message)
       res.status(500).send('something failed');
