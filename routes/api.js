@@ -49,7 +49,7 @@ router
       const validpassword = bcrypt.compare(req.body.password, user.password);
       if (!validpassword) return res.status(400).send('invalid password');
       const token = jwt.sign({ _id: user._id }, jwtkey);
-      res.json(token);
+      res.json({token});
     } catch (error) {
       logger.error(error.message)
       res.status(500).send('something failed');
