@@ -3,15 +3,14 @@ const app = express();
 const mongoose = require('mongoose');
 const { url } = require('./config/key');
 const winston=require('winston')
+const bodyParser=require('body-parser')
 
 
-
-app.use(express.json());
+app.use(bodyParser.json());
 app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-    res.header('Access-Control-Allow-Credentials', true); 
+    res.header('Access-Control-Allow-Headers', 'Content-Type'); // If needed
     next();
 })
 

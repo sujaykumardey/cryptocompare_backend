@@ -15,7 +15,7 @@ router
   .get('/key', async (req, res) => {
     try {
       const result = await Key.find();
-      res.send(result[0].key);
+      res.json({key:result[0].key});
     } catch (error) {
       logger.error('info',error.message)
       res.status(500).send('something failed');
@@ -33,7 +33,7 @@ router
       const hashed = await bcrypt.hash(login.password, salt);
       login.password = hashed;
       const user = await login.save();
-      res.send(_.pick(user, ['_id', 'name', 'email']));
+      res.json(_.pick(user, ['_id', 'name', 'email']));
     } catch (errror) {
       logger.error('info',error.message)
       res.status(500).send('something failed');
@@ -49,7 +49,7 @@ router
       const validpassword = bcrypt.compare(req.body.password, user.password);
       if (!validpassword) return res.status(400).send('invalid password');
       const token = jwt.sign({ _id: user._id }, jwtkey);
-      res.send(token);
+      res.json(token);
     } catch (error) {
       logger.error(error.message)
       res.status(500).send('something failed');
