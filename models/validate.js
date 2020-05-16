@@ -19,5 +19,29 @@ function validateAuth(user) {
   return Joi.validate(user, Schema);
 }
 
+
+
+function validateCoin(user) {
+  const Schema = {
+    coin: Joi.string().min(3).max(255).required().uppercase(),
+    price: Joi.number().min(1).max(255).required(),
+  };
+
+  return Joi.validate(user, Schema);
+}
+
+
+
+
+function validateCoinToDelete(user) {
+  const Schema = {
+    coin: Joi.string().min(3).max(255).required().uppercase(),
+};
+
+  return Joi.validate(user, Schema);
+}
+
 exports.validateUser = validateUser;
 exports.validateAuth = validateAuth;
+exports.validateCoin = validateCoin;
+exports.validateCoinToDelete = validateCoinToDelete;

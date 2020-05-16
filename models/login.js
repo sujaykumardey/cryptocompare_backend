@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+
+const coindetail=new mongoose.Schema({
+    coin:String,
+    price:Number,
+})
+
+const Coin = mongoose.model('Coin', coindetail);
 const logindetail = new mongoose.Schema({
   name: {
     type: String,
@@ -20,8 +27,11 @@ const logindetail = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024,
   },
+coins:[coindetail],
+
 });
 
 const Login = mongoose.model('login', logindetail);
 
-module.exports = Login;
+exports.Login= Login;
+exports.Coin= Coin;

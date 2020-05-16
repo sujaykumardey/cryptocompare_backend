@@ -1,10 +1,12 @@
+const auth=require('../middleware/auth')
 const express = require('express');
 const router = require('express').Router();
 const winston = require('winston');
 const Key = require('../models/key');
-const Login = require('../models/login');
+const {Login} = require('../models/login');
+const {Coin} = require('../models/login');
 const Joi = require('joi');
-const { validateUser, validateAuth } = require('../models/validate');
+const { validateUser, validateAuth,validateCoin,validateCoinToDelete } = require('../models/validate');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -36,7 +38,7 @@ router
       
       const token = jwt.sign({ _id: user._id }, jwtkey);
       user.token=token;
-      res.json(_.pick(user, ['_id', 'name', 'email','token']))
+      res.json(_.pick(user, ['_id', 'name', 'email','token','coins']))
     } catch (errror) {
       logger.error('info',error.message)
       res.status(500).send('something failed');
@@ -53,11 +55,47 @@ router
       if (!validpassword) return res.status(400).send('invalid password');
       const token = jwt.sign({ _id: user._id }, jwtkey);
       user.token=token;
-      res.json(_.pick(user, ['_id', 'name', 'email','token']))
+      res.json(_.pick(user, ['_id', 'name', 'email','token','coins']))
     } catch (error) {
       logger.error(error.message)
       res.status(500).send('something failed');
     }
-  });
+  })  
+  .post('/coins',auth, async (req, res) => {
+    try {
+      const { error } = validateCoin(req.body);
+      if (error) return res.status(400).send('invalid coin and price');      
+      const user = await Login.findOne({_id:req.user._id} );
+      if (!user) return res.send("user doesn't exsit");
+      console.log(req.body.coin)
+      const isCoinPresent=user.coins.filter(e=>e.coin===req.body.coin)
+      console.log(isCoinPresent,'user')
+      if(isCoinPresent) return res.send('coin already present')
+      user.coins.push(req.body);
+      user.save();       
+      res.json(user.coins);
+    } catch (error) {
+      logger.error(error.message)
+      res.status(500).send('something failed');
+    }
+  })
+  .delete('/coins',auth, async (req, res) => {
+    try {
+      const { error } = validateCoinToDelete(req.body);
+      if (error) return res.status(400).send('invalid coin'); 
+      console.log('sujay')     
+      const user = await Login.findOne({_id:req.user._id} );
+      if (!user) return res.send("user doesn't exsit");
+      console.log(req.body.coin)
+      const isCoinPresent=user.coins.filter(e=>e.coin!==req.body.coin)
+      if(!isCoinPresent) return res.send("coin not present");
+      user.coins=isCoinPresent;
+      user.save();       
+      res.json(user.coins);
+    } catch (error) {
+      logger.error(error.message)
+      res.status(500).send('something failed');
+    }
+  })
 
 module.exports = router;

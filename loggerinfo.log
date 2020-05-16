@@ -5,3 +5,31 @@
 {"level":"error","message":"info","timestamp":"2020-05-13T06:22:45.398Z"}
 {"level":"error","message":"info","timestamp":"2020-05-13T06:23:16.662Z"}
 {"level":"error","message":"info","timestamp":"2020-05-13T06:23:57.132Z"}
+{"message":"Cannot read property '_id' of undefined","level":"error","timestamp":"2020-05-16T05:54:22.554Z"}
+{"message":"Parameter \"filter\" to findOne() must be an object, got 5ebf79a8ffa2ba2213d3d6f2","level":"error","timestamp":"2020-05-16T06:00:00.047Z"}
+{"message":"Invalid status code: success","level":"error","timestamp":"2020-05-16T06:01:26.929Z"}
+{"message":"Cannot read property 'coins' of null","level":"error","timestamp":"2020-05-16T06:04:53.264Z"}
+{"message":"Cannot read property 'coins' of null","level":"error","timestamp":"2020-05-16T06:06:58.508Z"}
+{"message":"Cannot access 'user' before initialization","level":"error","timestamp":"2020-05-16T06:07:26.128Z"}
+{"message":"Cannot access 'user' before initialization","level":"error","timestamp":"2020-05-16T06:07:51.902Z"}
+{"message":"Cannot read property 'coins' of null","level":"error","timestamp":"2020-05-16T06:10:18.822Z"}
+{"message":"Parameter \"filter\" to findOne() must be an object, got 5ebf79a8ffa2ba2213d3d6f2","level":"error","timestamp":"2020-05-16T06:25:54.614Z"}
+{"message":"Parameter \"filter\" to findOne() must be an object, got 5ebf79a8ffa2ba2213d3d6f2","level":"error","timestamp":"2020-05-16T06:28:13.742Z"}
+{"message":"Login.findOne is not a function","level":"error","timestamp":"2020-05-16T06:29:53.518Z"}
+{"message":"Login.findOne is not a function","level":"error","timestamp":"2020-05-16T06:30:24.109Z"}
+{"message":"Parameter \"filter\" to findOne() must be an object, got 5ebf79a8ffa2ba2213d3d6f2","level":"error","timestamp":"2020-05-16T06:31:40.780Z"}
+{"message":"Login.findOne is not a function","level":"error","timestamp":"2020-05-16T06:33:17.502Z"}
+{"message":"user.coins.findOne is not a function","level":"error","timestamp":"2020-05-16T06:39:29.827Z"}
+{"message":"Parameter \"obj\" to Document() must be an object, got ERT","level":"error","timestamp":"2020-05-16T06:45:26.833Z"}
+{"message":"Cannot read property 'findOne' of undefined","level":"error","timestamp":"2020-05-16T06:46:04.557Z"}
+{"message":"Cannot read property 'findOne' of undefined","level":"error","timestamp":"2020-05-16T06:46:30.803Z"}
+{"message":"Cannot read property 'findOne' of undefined","level":"error","timestamp":"2020-05-16T06:48:26.884Z"}
+{"message":"Cannot read property 'ERT' of undefined","level":"error","timestamp":"2020-05-16T06:52:37.553Z"}
+{"message":"Cannot read property 'ERT' of undefined","level":"error","timestamp":"2020-05-16T06:53:06.763Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:14:22.267Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:15:43.542Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:16:17.061Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:17:17.042Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:19:15.277Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:21:04.319Z"}
+{"message":"validateCoinToDelete is not a function","level":"error","timestamp":"2020-05-16T07:21:23.369Z"}
