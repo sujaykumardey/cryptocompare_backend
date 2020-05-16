@@ -8,10 +8,10 @@ const bodyParser=require('body-parser')
 
 app.use(bodyParser.json());
 app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-type,Accept,X-Access-Token,X-Key'); // If needed
-    res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); 
+    res.header("Access-Control-Allow-Headers", "accept, x-requested-with, origin, content-type, cookie, pragma, cache-control, x-auth-token\r\n");
+    res.header('Access-Control-Allow-Credentials', true); 
     next();
 })
 const port = process.env.PORT || 3000;
