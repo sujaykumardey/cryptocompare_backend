@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.setHeader('Access-Control-Allow-Headers', '*'); // If needed
+    res.setHeader('Access-Control-Allow-Headers', 'x-requested-with,content-type'); // If needed
     res.setHeader('Access-Control-Allow-Credentials', true); // If needed
     next();
 })
