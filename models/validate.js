@@ -35,7 +35,7 @@ function validateCoin(user) {
 
 function validateCoinToDelete(user) {
   const Schema = {
-    coin: Joi.string().min(3).max(255).required().uppercase(),
+    _id: Joi.string().min(24).max(24).required(),
 };
 
   return Joi.validate(user, Schema);

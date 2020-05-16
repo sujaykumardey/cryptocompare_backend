@@ -83,7 +83,7 @@ router
       if (error) return res.status(400).send('invalid coin'); 
       const user = await Login.findOne({_id:req.user._id} );
       if (!user) return res.send("user doesn't exsit");
-      const isCoinPresent=user.coins.filter(e=>e.coin!==req.body.coin)
+      const isCoinPresent=user.coins.filter(e=>e._id!==req.body._id)
       if(!isCoinPresent) return res.send("coin not present");
       user.coins=isCoinPresent;
       user.save();       
