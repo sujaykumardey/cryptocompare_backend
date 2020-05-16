@@ -67,10 +67,8 @@ router
       if (error) return res.status(400).send('invalid coin and price');      
       const user = await Login.findOne({_id:req.user._id} );
       if (!user) return res.send("user doesn't exsit");
-      console.log(req.body.coin)
       const isCoinPresent=user.coins.filter(e=>e.coin===req.body.coin)
-      console.log(isCoinPresent,'user')
-      if(isCoinPresent) return res.send('coin already present')
+      if(isCoinPresent && isCoinPresent.length > 0) return res.send('coin already present')
       user.coins.push(req.body);
       user.save();       
       res.json(user.coins);
@@ -83,10 +81,8 @@ router
     try {
       const { error } = validateCoinToDelete(req.body);
       if (error) return res.status(400).send('invalid coin'); 
-      console.log('sujay')     
       const user = await Login.findOne({_id:req.user._id} );
       if (!user) return res.send("user doesn't exsit");
-      console.log(req.body.coin)
       const isCoinPresent=user.coins.filter(e=>e.coin!==req.body.coin)
       if(!isCoinPresent) return res.send("coin not present");
       user.coins=isCoinPresent;
