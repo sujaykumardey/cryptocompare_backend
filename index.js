@@ -7,18 +7,9 @@ const winston=require('winston')
 const bodyParser=require('body-parser')
 
 
+app.use(bodyParser.json())
+app.use(cors())
 
-var rawBodyHandler = function (req, res, buf, encoding) {
-  if (buf && buf.length) {
-      req.rawBody = buf.toString(encoding || 'utf8');
-      console.log('Raw body: ' + req.rawBody);
-  }
-}
-
-app.use(cors({ allowedHeaders: 'Content-Type, Cache-Control' }));
-app.options('*', cors());  // enable pre-flight
-
-app.use(bodyParser.json({ verify: rawBodyHandler }));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on ${port}...`));
