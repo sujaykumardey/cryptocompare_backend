@@ -7,9 +7,9 @@ const winston=require('winston')
 const bodyParser=require('body-parser')
 
 
-app.use(bodyParser.json())
-app.use(cors())
 
+app.use(cors())
+app.use(bodyParser.json())
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on ${port}...`));
