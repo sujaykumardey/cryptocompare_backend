@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const core=require('cors')
 const mongoose = require('mongoose');
 const { url } = require('./config/key');
 const winston=require('winston')
@@ -7,13 +8,8 @@ const bodyParser=require('body-parser')
 
 
 app.use(bodyParser.json());
-app.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE, PUT'); 
-    res.setHeader('Access-Control-Allow-Headers', 'x-requested-with, origin, content-type, cookie, pragma, cache-control, x-auth-token,Accept');
-    res.setHeader('Access-Control-Allow-Credentials', true); 
-    next();
-})
+app.use(cors())
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on ${port}...`));
 const routers = require('./routes/api');
