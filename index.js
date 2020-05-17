@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const core=require('cors')
+const cors=require('cors')
 const mongoose = require('mongoose');
 const { url } = require('./config/key');
 const winston=require('winston')
