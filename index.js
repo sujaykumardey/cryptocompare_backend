@@ -7,7 +7,7 @@ const winston=require('winston')
 const bodyParser=require('body-parser')
 
 
-app.use(bodyParser.json());
+
 app.use(cors())
 
 const port = process.env.PORT || 3000;
