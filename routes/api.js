@@ -1,6 +1,7 @@
 const auth=require('../middleware/auth')
 const express = require('express');
 const router = require('express').Router();
+const cors=require('cors')
 const winston = require('winston');
 const Key = require('../models/key');
 const {Login} = require('../models/login');
@@ -77,8 +78,8 @@ router
       res.status(500).send('something failed');
     }
   })
-  .options('/coins', cors())
-  .del('/coins',cors(),auth, async (req, res) => {
+  .options('/coins',cors())
+  .delete('/coins',cors(),auth, async (req, res) => {
     try {
       const { error } = validateCoinToDelete(req.body);
       if (error) return res.status(400).send('invalid coin'); 
