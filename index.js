@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 const { url } = require('./config/key');
 const winston = require('winston');
 const bodyParser = require('body-parser');
+const routers = require('./routes/api');
 
 app.use(bodyParser.json());
 app.use(cors());
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`listening on ${port}...`));
-const routers = require('./routes/api');
 
 mongoose.connect(url, {
   useNewUrlParser: true,

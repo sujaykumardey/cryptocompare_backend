@@ -61,7 +61,7 @@ router
       res.status(500).send('something failed');
     }
   })  
-  .get('/coins',auth,async (req, res) => {
+  .post('/coins',auth,async (req, res) => {
     try {
       const { error } = validateCoin(req.body);
       if (error) return res.status(400).send('invalid coin and price');      
