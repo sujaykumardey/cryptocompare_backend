@@ -4,17 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.13",
-    "nodemon": "^2.0.3",
-    "underscore": "^1.10.2"
-=======
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
@@ -37,6 +26,5 @@
     "underscore": "^1.10.2",
     "winston": "^3.2.1",
     "winston-mongodb": "^5.0.1"
->>>>>>> test-branch
   }
 }
