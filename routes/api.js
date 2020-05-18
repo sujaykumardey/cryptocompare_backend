@@ -78,6 +78,7 @@ router
       res.status(500).send('something failed');
     }
   })
+  .options('*', cors())
   .options('/coins',cors())
   .delete('/coins',cors(),auth, async (req, res) => {
     try {
