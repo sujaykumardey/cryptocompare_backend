@@ -78,7 +78,7 @@ router
     }
   })
   
-  .delete('/coins',core(),auth, async (req, res) => {
+  .delete('/coins',auth, async (req, res) => {
     try {
       const { error } = validateCoinToDelete(req.body);
       if (error) return res.status(400).send('invalid coin'); 
