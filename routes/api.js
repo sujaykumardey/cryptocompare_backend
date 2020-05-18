@@ -1,5 +1,6 @@
 const auth=require('../middleware/auth')
 const express = require('express');
+const cors = require('cors');
 const router = require('express').Router();
 const winston = require('winston');
 const Key = require('../models/key');
@@ -61,7 +62,7 @@ router
       res.status(500).send('something failed');
     }
   })  
-  .post('/coins',auth, async (req, res) => {
+  .get('/coins',auth, cors({methods:['POST']}),async (req, res) => {
     try {
       const { error } = validateCoin(req.body);
       if (error) return res.status(400).send('invalid coin and price');      
