@@ -24,7 +24,7 @@ function validateAuth(user) {
 function validateCoin(user) {
   const Schema = {
     coin: Joi.string().min(3).max(255).required().uppercase(),
-    price: Joi.number().min(1).max(255).required(),
+    price: Joi.number().required(),
   };
 
   return Joi.validate(user, Schema);
